@@ -2,7 +2,7 @@ import * as React from 'react'
 
 const Loader: React.FC = () => {
   return (
-    <div className="text-center">
+    <div className="flex h-screen items-center justify-center">
       <div role="status">
         <svg
           aria-hidden="true"
