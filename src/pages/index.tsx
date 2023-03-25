@@ -4,16 +4,17 @@ import useSWR from 'swr'
 import { useEffect } from 'react'
 import Loader from '@/components/Loader'
 import useNftStore from '@/store/store'
+import { API_URL } from '@/constants'
 
 const fetcher = (url: string) => axios.get(url)
 
 export default function Home() {
   const setNfts = useNftStore((state) => state.setNfts)
-  const { data, error, isLoading } = useSWR('/api/nfts', fetcher)
+  const { data, error, isLoading } = useSWR(API_URL, fetcher)
 
   useEffect(() => {
     if (data) {
-      setNfts(data.data)
+      setNfts(data.data.results)
     }
   }, [data, setNfts])
 

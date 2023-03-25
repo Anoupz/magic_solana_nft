@@ -15,7 +15,7 @@ export default function ImageCard({ nft, style }: ImageCardProps) {
     >
       <div className="after:content group relative mb-5 block w-full after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight object-cover">
         <Image
-          src={nft.extra.img}
+          src={nft.onChainCollection.data.image}
           alt="Okay Bear"
           className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
           width={720}
@@ -24,11 +24,13 @@ export default function ImageCard({ nft, style }: ImageCardProps) {
                   (max-width: 1280px) 50vw,
                   (max-width: 1536px) 33vw,
                   25vw"
+          blurDataURL="LaFZpXaeu6oft-kCVraeW?aenNbI"
+          placeholder="blur"
         />
       </div>
       <div className="px-6 py-3 relative">
         <h3 className="font-semibold absolute bottom-1 left-1 text-white">
-          Okay Bear
+          {nft.title}
         </h3>
         <div className="absolute bottom-1 right-1 text-white">
           <div className="flex gap-2">

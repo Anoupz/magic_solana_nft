@@ -1,7 +1,11 @@
 export type NFTCollection = {
-  tokenAddress: string
-  extra: {
-    img: string
+  mintAddress: string
+  title: string
+  onChainCollection: {
+    data: {
+      image: string
+      name: string
+    }
   }
   price: number
   name: string

@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '*.ipfs.nftstorage.link',
+        hostname: '*',
         port: '',
       },
     ],
