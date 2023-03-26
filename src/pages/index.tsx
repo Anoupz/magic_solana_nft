@@ -10,10 +10,7 @@ const fetcher = (url: string) => axios.get(url)
 
 export default function Home() {
   const setNfts = useNftStore((state) => state.setNfts)
-  const { data, error, isLoading } = useSWR(
-    '/api/proxy?collectionSymbol=degods',
-    fetcher
-  )
+  const { data, error, isLoading } = useSWR(API_URL, fetcher)
 
   useEffect(() => {
     if (data) {
