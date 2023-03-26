@@ -48,6 +48,7 @@ const Header: React.FC = () => {
               searchString && (
                 <button
                   className="absolute top-0 right-0 h-full flex items-center pr-3"
+                  data-testid="clear-btn"
                   onClick={handleClear}
                 >
                   <FaTimes className="text-white" />

@@ -36,7 +36,7 @@ const useNftStore = create<NftsState>((set, get) => ({
     const results = fuse.search(query) as Fuse.FuseResult<NFTCollection>[]
     const searchResults = results.map((result) => result.item)
     useNftStore.getState().setSearchResults(searchResults)
-  }, 500),
+  }, 200),
 }))
 
 export default useNftStore
