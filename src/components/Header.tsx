@@ -22,7 +22,7 @@ const Header: React.FC = () => {
   }
 
   return (
-    <div className="fixed top-0 z-10 w-full shadow-md px-4 sm:px-8 md:px-16 lg:px-24 xl:px-20">
+    <div className="fixed top-0 z-10 w-full shadow-md px-4 sm:px-8 md:px-16 lg:px-20 xl:px-20">
       <header className="bg-black py-2 text-white flex justify-center md:justify-between">
         <div className="flex items-center">
           <h1 className="hidden font-semibold md:block text-3xl lg:text-4xl">

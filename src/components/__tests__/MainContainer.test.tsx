@@ -45,6 +45,12 @@ describe('MainContainer', () => {
         setNfts: jest.fn(),
         setSearchResults: jest.fn(),
         search: jest.fn(),
+        hasMore: false,
+        loadMoreData: jest.fn(),
+        limit: 20,
+        offset: 0,
+        isLoading: false,
+        setOffset: jest.fn(),
       })
     )
   })

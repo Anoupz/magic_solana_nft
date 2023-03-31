@@ -1,13 +1,49 @@
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 import Header from '@/components/Header'
 import ImageCard from '@/components/ImageCard'
 import useNftStore from '@/store/store'
+import Loader from '@/components/Loader'
 
 const MainContainer: React.FC = () => {
-  const { nfts, searchResults } = useNftStore((state) => ({
+  const {
+    nfts,
+    searchResults,
+    limit,
+    offset,
+    loadMoreData,
+    isLoading,
+    setOffset,
+    hasMore,
+  } = useNftStore((state) => ({
     nfts: state.nfts,
     searchResults: state.searchResults,
+    limit: state.limit,
+    offset: state.offset,
+    loadMoreData: state.loadMoreData,
+    isLoading: state.isLoading,
+    setOffset: state.setOffset,
+    hasMore: state.hasMore,
   }))
+
+  const handleScroll = useCallback(() => {
+    const scrollTop =
+      (document.documentElement && document.documentElement.scrollTop) ||
+      document.body.scrollTop
+    const scrollHeight =
+      (document.documentElement && document.documentElement.scrollHeight) ||
+      document.body.scrollHeight
+    const clientHeight =
+      document.documentElement.clientHeight || window.innerHeight
+    if (scrollTop + clientHeight >= scrollHeight - 5 && !isLoading && hasMore) {
+      setOffset(offset + limit)
+      loadMoreData()
+    }
+  }, [loadMoreData, hasMore, isLoading, limit, offset, setOffset])
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [handleScroll])
 
   const filteredNfts = searchResults.length ? searchResults : nfts
 
@@ -24,6 +60,7 @@ const MainContainer: React.FC = () => {
             <div className="text-white">No collections</div>
           )}
         </div>
+        {isLoading && <Loader />}
       </main>
     </>
   )
